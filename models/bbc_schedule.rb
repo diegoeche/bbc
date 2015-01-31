@@ -19,6 +19,12 @@ class BBCSchedule
     BBCSchedule.from_json(JSON.parse(response.body))
   end
 
+  def self.all_schedules(date)
+    BBCSchedule.new(
+      SOURCES.keys.map { |source| BBCSchedule.load(source, date).broadcasts }.flatten
+    )
+  end
+
   def self.from_json(json)
     broadcasts = json["schedule"]["day"]["broadcasts"].map { |broadcast_json|
       display_titles = broadcast_json["programme"]["display_titles"]
@@ -34,7 +40,7 @@ class BBCSchedule
   def self.make_url(source, date)
     source = SOURCES[source]
     "#{source}/#{date.year}/#{date.month}/#{date.day}.json"
-  endj
+  end
 end
 
 

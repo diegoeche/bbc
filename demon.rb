@@ -8,6 +8,9 @@ class Demon
   end
 
   def tick!
+    if pending.empty?
+      fetch_next_day!
+    end
     nowish = DateTime.now.to_time.to_i
 
     on_air_now = pending.select { |broadcast|
@@ -20,5 +23,9 @@ class Demon
     }
 
     self.pending = self.pending - on_air_now
+  end
+
+  def fetch_next_day!
+    raise "Not Implemented"
   end
 end
