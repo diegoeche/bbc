@@ -1,0 +1,20 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    addressable (2.3.6)
+    crack (0.4.2)
+      safe_yaml (~> 1.0.0)
+    safe_yaml (1.0.4)
+    timecop (0.7.1)
+    vcr (2.9.3)
+    webmock (1.20.4)
+      addressable (>= 2.3.6)
+      crack (>= 0.3.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  timecop
+  vcr
+  webmock
